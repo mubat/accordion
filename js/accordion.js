@@ -42,6 +42,10 @@
 
         options.targetBlock = $(options.targetBlock || this);
 
-        new AccordionWidget(options);
+        if (!options.targetBlock.data('accordion')) {
+            options.targetBlock.data('accordion', new AccordionWidget(options));
+        }
+
+        return  options.targetBlock.data('accordion');
     };
 }(window.jQuery));
