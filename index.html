@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Accordion test script</title>
-    <script src="css/style.css"></script>
+    <title>Тестовый проект реализации аккордеона</title>
+    <link href="css/style.css" rel="stylesheet">
     <script src="js/accordion.js"></script>
 </head>
 <body>
 <div class="content">
-    <h1>Accordion test script</h1>
+    <h1>Тестовый проект реализации аккордеона</h1>
     <div class="accordion">
-        <div class="accordion__title-list">
-            <h4 data-content="news">Some news</h4>
-            <h4 data-content="picture">Show picture</h4>
-            <h4 data-content="text">Description</h4>
+        <div class="accordion__item">
+            <div class="accordion__title" data-content="news">
+                <h4>Новость</h4>
+            </div>
+            <div id="news" class="accordion__content">
+                Компания Intel внесла изменения в лицензионное соглашение для обновленного микрокода своих процессоров.
+                В
+                тексте упоминается запрет публикации результатов тестирования производительности. По новым условиям,
+                пользователи не имеют права запускать бенчмарки, если их результаты планируется показать третьим лицам.
+            </div>
         </div>
-        <div  class="accordion__content">
-            <div id="news" class="accordion__content-item">
-
+        <div class="accordion__item">
+            <div class="accordion__title" data-content="picture">
+                <h4>Изображение</h4>
             </div>
-            <div id="picture" class="accordion__content-item">
-
+            <div id="picture" class="accordion__content">
+                <img src="https://cdn.tproger.ru/wp-content/uploads/2018/08/feedback-mini.png" alt="">
             </div>
-            <div id="text" class="accordion__content-item">
-
+        </div>
+        <div class="accordion__item">
+            <div class="accordion__title" data-content="text">
+                <h4>Дополнительный текст</h4>
+            </div>
+            <div id="text" class="accordion__content">
+                На изменения обратил внимание один из лидеров Open Source движения Брюс Перенс (Bruce Perens). Поскольку
+                микрокод применяется при выполнении всех инструкций, правила касаются всего процессора. В то же время,
+                запрет действует даже на тесты производительности, которые написаны самими пользователями.
             </div>
         </div>
     </div>
