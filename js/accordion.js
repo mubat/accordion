@@ -1,15 +1,15 @@
 (function ($) {
     function AccordionWidget(options) {
         this.widgetBlock = $(options.targetBlock);
-        this.listSelector = options.listSelector || '.accordion__content';
+        this.contentSelector = options.contentSelector || '.accordion__content';
         this.activeClass = 'active';
         this.titleSelector = '.accordion__title';
-        this.itemsList = this.widgetBlock.find(this.listSelector);
+        this.itemsList = this.widgetBlock.find(this.contentSelector);
 
         let widget = this;
         this.widgetBlock.data('accordionWidget', this);
 
-        if (this.itemsList.find(this.listSelector + '.' + this.activeClass).length === 0) {
+        if (this.getActive().length === 0) {
             this.activateBlock(this.itemsList[0].id, true);
         }
 
@@ -26,6 +26,10 @@
                 widget.activateBlock(item.id, item.id === eventBlock.data('content'));
             });
         }
+    };
+
+    AccordionWidget.prototype.getActive = function () {
+        return this.widgetBlock.find(this.contentSelector + '.' + this.activeClass);
     };
 
     AccordionWidget.prototype.activateBlock = function (targetId, isActive) {
