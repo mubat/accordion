@@ -1,16 +1,19 @@
 (function ($) {
     function AccordionWidget(options) {
-        this.element = $(options.targetBlock);
-        this.itemsList = this.element.find('.accordion__content');
+        this.widgetBlock = $(options.targetBlock);
+        this.listSelector = options.listSelector || '.accordion__content';
+        this.activeClass = 'active';
+        this.titleSelector = '.accordion__title';
+        this.itemsList = this.widgetBlock.find(this.listSelector);
 
         let widget = this;
-        this.element.data('accordionWidget', this);
+        this.widgetBlock.data('accordionWidget', this);
 
-        if (this.itemsList.find('.accordion__content.active').length === 0) {
+        if (this.itemsList.find(this.listSelector + '.' + this.activeClass).length === 0) {
             this.activateBlock(this.itemsList[0].id, true);
         }
 
-        this.element.find('.accordion__title').on('click', function () {
+        this.widgetBlock.find(this.titleSelector).on('click', function () {
             widget.toggle(this);
         });
     }
@@ -26,8 +29,8 @@
     };
 
     AccordionWidget.prototype.activateBlock = function (targetId, isActive) {
-        this.element.find('#' + targetId).toggleClass('active', isActive);
-        this.element.find('[data-content="' + targetId + '"]').toggleClass('active', isActive);
+        this.widgetBlock.find('#' + targetId).toggleClass(this.activeClass, isActive);
+        this.widgetBlock.find('[data-content="' + targetId + '"]').toggleClass(this.activeClass, isActive);
     };
 
     $.fn.accordion = function (options) {
